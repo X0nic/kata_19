@@ -3,6 +3,8 @@ class Dictionary
 
   def initialize(base_word:)
     @base_word = base_word
+
+    raise 'base_word cant be nil' if base_word == nil
   end
 
   def words

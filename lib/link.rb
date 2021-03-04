@@ -1,8 +1,9 @@
 class Link
-  attr_reader :left_word
+  attr_reader :left_word, :ending_word
 
-  def initialize(left_word:)
+  def initialize(left_word:, ending_word:)
     @left_word = left_word
+    @ending_word = ending_word
   end
 
   def words
@@ -10,7 +11,7 @@ class Link
   end
 
   def right_word
-    all_matches.first
+    WordScore.new(base_word: left_word, ending_word: ending_word, words: all_matches).possible_words.first
   end
 
   def additive_matches

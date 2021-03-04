@@ -7,6 +7,15 @@ class Chain
   end
 
   def show
-    [first_word, last_word]
+    [first_word] + next_words(first_word)
+  end
+
+  def next_words(word)
+    next_word = Link.new(left_word: word, ending_word: last_word).right_word
+
+    return [ last_word ] if next_word == last_word
+    return [] if next_word == nil
+
+    [ next_word ] + next_words(next_word)
   end
 end

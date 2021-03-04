@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe Link do
-  subject { described_class.new(left_word: left_word) }
+  subject { described_class.new(left_word: left_word, ending_word: ending_word) }
 
   let(:left_word) { 'cart' }
+  let(:ending_word) { 'bird' }
 
   it 'right_word' do
-    expect(subject.right_word).to eq "art"
+    expect(subject.right_word).to eq 'card'
   end
 
   it 'additive_matches' do
