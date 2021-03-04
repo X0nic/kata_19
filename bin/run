@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
+
+require 'bundler/setup'
+Bundler.require
+
+Dir[File.join(__dir__, '..', 'lib', '*.rb')].each { |file| require file }
+
+require_relative '../words'
+
+Words.run(first_word: ARGV[0], last_word: ARGV[1])
