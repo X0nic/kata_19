@@ -18,11 +18,15 @@ class Chain
   end
 
   def next_words(word)
-    next_word = Link.new(left_word: word, ending_word: last_word, dictionary: dictionary).right_word
+    next_word = get_next_word(word)
 
     return [ last_word ] if next_word == last_word
     return [] if next_word == nil
 
     [ next_word ] + next_words(next_word)
+  end
+
+  def get_next_word(word)
+    Link.new(left_word: word, ending_word: last_word, dictionary: dictionary).right_word
   end
 end

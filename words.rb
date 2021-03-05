@@ -4,6 +4,12 @@ class Words
     puts "last word: #{last_word}"
 
     chain = Chain.new(first_word: first_word, last_word: last_word)
-    puts "chain: #{chain.show.join(' -> ')}"
+
+    words = chain.show
+    if words.last == last_word
+      puts "chain: #{words.join(' -> ')}"
+    else
+      puts "Could not find ending word #{last_word}. Found #{words.join(' -> ')} instead."
+    end
   end
 end
