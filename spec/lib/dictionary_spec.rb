@@ -20,6 +20,24 @@ describe Dictionary do
     expect(subject.words).not_to include base_word
   end
 
+  it '#remove_word_from_use' do
+    expect(subject.words).to include 'bard'
+
+    subject.remove_word_from_use('bard')
+
+    expect(subject.words).not_to include 'bard'
+  end
+
+  describe '#words_with_length' do
+    it 'filters words by length' do
+      expect(subject.words_with_length(3).map(&:length).uniq).to eq [3]
+      expect(subject.words_with_length(3).first).to eq 'ace'
+
+      expect(subject.words_with_length(4).map(&:length).uniq).to eq [4]
+      expect(subject.words_with_length(4).first).to eq 'abed'
+    end
+  end
+
   describe '#exists?' do
     it 'for an existing word' do
       expect(subject.exists?('car')).to be_truthy

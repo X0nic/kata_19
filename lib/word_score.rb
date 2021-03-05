@@ -1,7 +1,7 @@
 class WordScore
-  attr_reader :base_word, :ending_word
+  attr_reader :base_word, :ending_word, :words
 
-  def initialize(base_word:, ending_word:, words: nil)
+  def initialize(base_word:, ending_word:, words:)
     @base_word = base_word
     @ending_word = ending_word
     @words = words
@@ -29,11 +29,5 @@ class WordScore
     score -= 1 if word.length != ending_word.length
 
     score
-  end
-
-  private
-
-  def words
-    @words ||= Dictionary.new(base_word: base_word).words
   end
 end
