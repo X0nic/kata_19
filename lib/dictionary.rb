@@ -8,10 +8,13 @@ class Dictionary
   end
 
   def words
-    @words ||=  open('words.txt')
+    @words ||=  all_words.reject{ |line| line == base_word }
+  end
+
+  def all_words
+    @all_words ||=  open('words.txt')
       .each_line
       .collect { |line| line.strip }
-      .reject{ |line| line == base_word }
   end
 
   def first
@@ -20,5 +23,9 @@ class Dictionary
 
   def last
     words.last
+  end
+
+  def exists?(word)
+    all_words.find { |w| w == word }
   end
 end

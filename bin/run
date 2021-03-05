@@ -8,4 +8,8 @@ Dir[File.join(__dir__, '..', 'lib', '*.rb')].each { |file| require file }
 
 require_relative '../words'
 
-Words.run(first_word: ARGV[0], last_word: ARGV[1])
+if ARGV.length == 2
+  Words.run(first_word: ARGV[0], last_word: ARGV[1])
+else
+  puts 'Usage: ./run cat bird'
+end

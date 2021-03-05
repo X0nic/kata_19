@@ -6,7 +6,14 @@ class Chain
     @last_word = last_word
   end
 
+  def dictionary
+    @dictionary ||= Dictionary.new(base_word: first_word)
+  end
+
   def show
+    raise "Could not find word: '#{first_word}'" unless dictionary.exists?(first_word)
+    raise "Could not find word: '#{last_word}'" unless dictionary.exists?(last_word)
+
     [first_word] + next_words(first_word)
   end
 
